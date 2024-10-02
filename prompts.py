@@ -51,7 +51,9 @@ You are a world-class podcast producer tasked with transforming the provided inp
    - Include brief "breather" moments for listeners to absorb complex information
    - End on a high note, perhaps with a thought-provoking question or a call-to-action for listeners
 
-IMPORTANT RULE: Each line of dialogue should be no more than 100 characters (e.g., can finish within 5-8 seconds)
+IMPORTANT RULE: Each line of dialogue should be no more than 1000 characters (e.g., can finish within 55-85 seconds)
+
+IMPORTANT RULE: There should be at least 100 interactions between the host and guest.
 
 Remember: Always reply in valid JSON format, without code blocks. Begin directly with the JSON output.
 """
@@ -65,4 +67,5 @@ LANGUAGE_MODIFIER = "OUTPUT LANGUAGE <IMPORTANT>: The the podcast should be"
 LENGTH_MODIFIERS = {
     "Short (1-2 min)": "Keep the podcast brief, around 1-2 minutes long.",
     "Medium (3-5 min)": "Aim for a moderate length, about 3-5 minutes.",
+    "Long (30-60 min)": "Aim for the longest length, about 30-60 minutes.",
 }

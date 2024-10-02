@@ -36,7 +36,7 @@ from constants import (
     JINA_RETRY_ATTEMPTS,
     JINA_RETRY_DELAY,
 )
-from schema import ShortDialogue, MediumDialogue
+from schema import ShortDialogue, MediumDialogue, LongDialogue
 
 # Initialize clients
 fw_client = OpenAI(base_url=FIREWORKS_BASE_URL, api_key=FIREWORKS_API_KEY)
@@ -49,8 +49,8 @@ preload_models()
 def generate_script(
     system_prompt: str,
     input_text: str,
-    output_model: Union[ShortDialogue, MediumDialogue],
-) -> Union[ShortDialogue, MediumDialogue]:
+    output_model: Union[ShortDialogue, MediumDialogue, LongDialogue],
+) -> Union[ShortDialogue, MediumDialogue, LongDialogue]:
     """Get the dialogue from the LLM."""
 
     # Call the LLM
@@ -78,7 +78,7 @@ def generate_script(
 
     # Call the LLM a second time to improve the dialogue
     system_prompt_with_dialogue = f"{system_prompt}\n\nHere is the first draft of the dialogue you provided:\n\n{first_draft_dialogue}."
-
+    print(system_prompt_with_dialogue)
     # Validate the response
     for attempt in range(FIREWORKS_JSON_RETRY_ATTEMPTS):
         try:
@@ -98,11 +98,14 @@ def generate_script(
                 ) from e
             error_message = f"Failed to improve dialogue (attempt {attempt + 1}): {e}"
             system_prompt_with_dialogue += f"\n\nPlease return a VALID JSON object. This was the earlier error: {error_message}"
+
+    print(final_dialogue)
     return final_dialogue
 
 
 def call_llm(system_prompt: str, text: str, dialogue_format: Any) -> Any:
     """Call the LLM with the given prompt and dialogue format."""
+    print(text)
     response = fw_client.chat.completions.create(
         messages=[
             {"role": "system", "content": system_prompt},

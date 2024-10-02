@@ -48,7 +48,7 @@ from prompts import (
     SYSTEM_PROMPT,
     TONE_MODIFIER,
 )
-from schema import ShortDialogue, MediumDialogue
+from schema import ShortDialogue, MediumDialogue, LongDialogue
 from utils import generate_podcast_audio, generate_script, parse_url
 
 
@@ -66,7 +66,8 @@ def generate_podcast(
     text = ""
 
     # Choose random number from 0 to 8
-    random_voice_number = random.randint(0, 8) # this is for suno model
+    # random_voice_number = random.randint(0, 8) # this is for suno model
+    random_voice_number = 0 # this is for suno model
 
     if not use_advanced_audio and language in NOT_SUPPORTED_IN_MELO_TTS:
         raise gr.Error(ERROR_MESSAGE_NOT_SUPPORTED_IN_MELO_TTS)
@@ -117,6 +118,9 @@ def generate_podcast(
         llm_output = generate_script(modified_system_prompt, text, ShortDialogue)
     else:
         llm_output = generate_script(modified_system_prompt, text, MediumDialogue)
+
+    if length == "Long (30-60 min)":
+        llm_output = generate_script(modified_system_prompt, text, LongDialogue)
 
     logger.info(f"Generated dialogue: {llm_output}")
 
@@ -224,4 +228,4 @@ demo = gr.Interface(
 )
 
 if __name__ == "__main__":
-    demo.launch(show_api=UI_SHOW_API)
+    demo.launch(show_api=UI_SHOW_API, server_name="0.0.0.0")

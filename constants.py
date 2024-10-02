@@ -22,9 +22,9 @@ ERROR_MESSAGE_READING_PDF = "Error reading the PDF file"
 ERROR_MESSAGE_TOO_LONG = "The total content is too long. Please ensure the combined text from PDFs and URL is fewer than {CHARACTER_LIMIT} characters."
 
 # Fireworks API-related constants
-FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY")
-FIREWORKS_BASE_URL = "https://api.fireworks.ai/inference/v1"
-FIREWORKS_MAX_TOKENS = 16_384
+FIREWORKS_API_KEY = 'abcd0123'
+FIREWORKS_BASE_URL = "http://127.0.0.1:5000/v1"
+FIREWORKS_MAX_TOKENS = 90_000
 FIREWORKS_MODEL_ID = "accounts/fireworks/models/llama-v3p1-405b-instruct"
 FIREWORKS_TEMPERATURE = 0.1
 FIREWORKS_JSON_RETRY_ATTEMPTS = 3
@@ -60,6 +60,7 @@ SUNO_LANGUAGE_MAPPING = {
     "Russian": "ru",
     "Spanish": "es",
     "Turkish": "tr",
+    "Romanian": "ro"
 }
 
 # General audio-related constants
@@ -111,7 +112,7 @@ UI_INPUTS = {
     },
     "length": {
         "label": "5. ⏱️ Choose the length",
-        "choices": ["Short (1-2 min)", "Medium (3-5 min)"],
+        "choices": ["Short (1-2 min)", "Medium (3-5 min)", "Long (30-60 min)"],
         "value": "Medium (3-5 min)",
     },
     "language": {
