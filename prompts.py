@@ -67,5 +67,5 @@ LANGUAGE_MODIFIER = "OUTPUT LANGUAGE <IMPORTANT>: The the podcast should be"
 LENGTH_MODIFIERS = {
     "Short (1-2 min)": "Keep the podcast brief, around 1-2 minutes long.",
     "Medium (3-5 min)": "Aim for a moderate length, about 3-5 minutes.",
-    "Long (30-60 min)": "Aim for the longest length, about 30-60 minutes.",
+    "Long (15-30 min)": "Aim for a long length, about 15-30 minutes.",
 }

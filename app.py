@@ -119,7 +119,7 @@ def generate_podcast(
     else:
         llm_output = generate_script(modified_system_prompt, text, MediumDialogue)
 
-    if length == "Long (30-60 min)":
+    if length == "Long (15-30 min)":
         llm_output = generate_script(modified_system_prompt, text, LongDialogue)
 
     logger.info(f"Generated dialogue: {llm_output}")

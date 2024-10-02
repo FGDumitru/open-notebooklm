@@ -112,7 +112,7 @@ UI_INPUTS = {
     },
     "length": {
         "label": "5. ⏱️ Choose the length",
-        "choices": ["Short (1-2 min)", "Medium (3-5 min)", "Long (30-60 min)"],
+        "choices": ["Short (1-2 min)", "Medium (3-5 min)", "Long (15-30 min)"],
         "value": "Medium (3-5 min)",
     },
     "language": {
